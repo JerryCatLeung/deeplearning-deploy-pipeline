@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-02-23T14:12:19.243Z" agent="5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Safari/605.1.15" etag="haUEWKR-mcJg9VUF6LtV" version="14.4.2" type="github">
+<mxfile host="app.diagrams.net" modified="2021-02-23T17:07:15.433Z" agent="5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Safari/605.1.15" etag="h5SZ-UAjAYrzpzi1QHlo" version="14.4.2" type="github">
   <diagram id="C58wniKrapcQ-cjKH00h" name="Page-1">
     <mxGraphModel dx="1638" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -77,10 +77,10 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="LFIR5Tasnli8CIpFmkzX-75" value="账户建立初期" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="180" y="667" width="120" height="30" as="geometry" />
+          <mxGeometry x="182.5" y="677" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="LFIR5Tasnli8CIpFmkzX-76" value="账户推广阶段" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="180" y="857" width="120" height="30" as="geometry" />
+          <mxGeometry x="182.5" y="867" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="LFIR5Tasnli8CIpFmkzX-78" value="" style="shape=link;html=1;width=2;fillColor=#1ba1e2;strokeColor=#006EAF;" edge="1" parent="1">
           <mxGeometry width="100" relative="1" as="geometry">
@@ -89,34 +89,34 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="LFIR5Tasnli8CIpFmkzX-79" value="查询式推荐" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="325" y="610" width="140" height="20" as="geometry" />
+          <mxGeometry x="327.5" y="620" width="140" height="20" as="geometry" />
         </mxCell>
         <mxCell id="LFIR5Tasnli8CIpFmkzX-80" value="主动式推荐" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="325" y="640" width="140" height="20" as="geometry" />
+          <mxGeometry x="327.5" y="650" width="140" height="20" as="geometry" />
         </mxCell>
         <mxCell id="LFIR5Tasnli8CIpFmkzX-81" value="提供指导价、周均搜索量、竞争激烈程度等信息" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="325" y="670" width="140" height="30" as="geometry" />
+          <mxGeometry x="327.5" y="680" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="LFIR5Tasnli8CIpFmkzX-84" value="支持筛选推荐理由标签、推广设备、省市地域" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="325" y="720" width="140" height="30" as="geometry" />
+          <mxGeometry x="327.5" y="730" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="LFIR5Tasnli8CIpFmkzX-85" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
-          <mxGeometry x="300" y="622" width="20" height="120" as="geometry" />
+          <mxGeometry x="302.5" y="632" width="20" height="120" as="geometry" />
         </mxCell>
         <mxCell id="LFIR5Tasnli8CIpFmkzX-86" value="主动式推荐" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="325" y="787" width="140" height="20" as="geometry" />
+          <mxGeometry x="327.5" y="797" width="140" height="20" as="geometry" />
         </mxCell>
         <mxCell id="LFIR5Tasnli8CIpFmkzX-87" value="推荐关键词数量与投放业务、自身账户关键词有关" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="325" y="817" width="140" height="30" as="geometry" />
+          <mxGeometry x="327.5" y="827" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="LFIR5Tasnli8CIpFmkzX-88" value="支持批量编辑调整计划/单元、匹配模式" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="325" y="927" width="140" height="30" as="geometry" />
+          <mxGeometry x="327.5" y="937" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="LFIR5Tasnli8CIpFmkzX-89" value="提供指导价、推荐理由标签、预估可能新增周均展现量、预估可能新增周均点击量" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="325" y="858.5" width="140" height="58.5" as="geometry" />
+          <mxGeometry x="327.5" y="868.5" width="140" height="58.5" as="geometry" />
         </mxCell>
         <mxCell id="LFIR5Tasnli8CIpFmkzX-90" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
-          <mxGeometry x="300" y="799.5" width="20" height="145" as="geometry" />
+          <mxGeometry x="302.5" y="809.5" width="20" height="145" as="geometry" />
         </mxCell>
         <mxCell id="LFIR5Tasnli8CIpFmkzX-93" value="词包购买" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="497" y="260" width="70" height="20" as="geometry" />
@@ -177,6 +177,15 @@
         </mxCell>
         <mxCell id="LFIR5Tasnli8CIpFmkzX-111" value="同行词" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="885.5" y="450" width="55" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-112" value="&lt;font style=&quot;font-size: 15px&quot;&gt;百度推广KR全景图&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="167.5" y="1020" width="235" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-113" value="&lt;font style=&quot;font-size: 14px&quot;&gt;营销生命周期&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="110" y="730" width="20" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-114" value="&lt;font style=&quot;font-size: 15px&quot;&gt;多多大师KR全景图&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="853.5" y="620" width="235" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
