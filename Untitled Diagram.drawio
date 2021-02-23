@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-02-23T14:10:04.372Z" agent="5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Safari/605.1.15" etag="baaJ3MVBCiWeCBHD5HJi" version="14.4.2" type="github">
+<mxfile host="app.diagrams.net" modified="2021-02-23T14:11:05.315Z" agent="5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Safari/605.1.15" etag="5sfYXgh9hT2FaOAIUp7B" version="14.4.2" type="github">
   <diagram id="C58wniKrapcQ-cjKH00h" name="Page-1">
     <mxGraphModel dx="1638" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -123,6 +123,60 @@
         </mxCell>
         <mxCell id="LFIR5Tasnli8CIpFmkzX-94" value="白盒" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="295" y="565" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-96" value="" style="shape=link;html=1;width=2;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="721" y="240" as="sourcePoint" />
+            <mxPoint x="1241" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-97" value="自主购买" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="936" y="210" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-98" value="单个词购买，SKU联想" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="814.25" y="260" width="130" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-99" value="query推词" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1056.25" y="290" width="60" height="33.33" as="geometry" />
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-100" value="词推荐" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="849.25" y="290" width="60" height="33.33" as="geometry" />
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-101" value="质优词" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="885.5" y="350" width="55" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-102" value="热搜词" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="818" y="350" width="55" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-103" value="飙升词" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="818" y="450" width="55" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-104" value="指标晒选" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="784.25" y="510" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-105" value="指标晒选" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1030.25" y="510" width="112" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-106" value="" style="shape=link;html=1;width=2;fillColor=#1ba1e2;strokeColor=#006EAF;" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="719" y="560" as="sourcePoint" />
+            <mxPoint x="1239" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-107" value="单个词购买，query联想" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1014.75" y="260" width="143" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-108" value="白盒" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="936" y="565" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-109" value="潜力词" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="818" y="400" width="55" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-110" value="长尾词" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="885.5" y="400" width="55" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LFIR5Tasnli8CIpFmkzX-111" value="同行词" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="885.5" y="450" width="55" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
