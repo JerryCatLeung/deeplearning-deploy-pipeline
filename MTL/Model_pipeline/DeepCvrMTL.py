@@ -10,16 +10,9 @@ and <<Product-based Neural Networks for User Response Prediction>> with the fell
 
 https://zhuanlan.zhihu.com/p/37562283
 https://tianchi.aliyun.com/datalab/dataSet.html?dataId=408
-
-by lambdaji
 """
-#from __future__ import absolute_import
-#from __future__ import division
-#from __future__ import print_function
 
-#import argparse
 import shutil
-#import sys
 import os
 import json
 import glob
