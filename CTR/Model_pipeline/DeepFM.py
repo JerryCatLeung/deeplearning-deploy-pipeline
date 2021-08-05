@@ -232,14 +232,6 @@ def model_fn(features, labels, mode, params):
             loss=loss,
             train_op=train_op)
 
-    # Provide an estimator spec for `ModeKeys.EVAL` and `ModeKeys.TRAIN` modes.
-    # return tf.estimator.EstimatorSpec(
-    #        mode=mode,
-    #        loss=loss,
-    #        train_op=train_op,
-    #        predictions={"prob": pred},
-    #        eval_metric_ops=eval_metric_ops)
-
 
 def batch_norm_layer(x, train_phase, scope_bn):
     bn_train = tf.contrib.layers.batch_norm(x, decay=FLAGS.batch_norm_decay, center=True, scale=True,
