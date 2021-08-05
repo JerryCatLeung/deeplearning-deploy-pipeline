@@ -382,20 +382,20 @@ def main(_):
                 fo.write("%f\t%f\n" % (prob['pctr'], prob['pcvr']))
     elif FLAGS.task_type == 'export':
         print("Not Implemented, Do It Yourself!")
-        #feature_spec = tf.feature_column.make_parse_example_spec(feature_columns)
+        feature_spec = tf.feature_column.make_parse_example_spec(feature_columns)
 
-        #feature_spec = {
-        #    'feat_ids': tf.FixedLenFeature(dtype=tf.int64, shape=[None, FLAGS.field_size]),
-        #    'feat_vals': tf.FixedLenFeature(dtype=tf.float32, shape=[None, FLAGS.field_size])
-        #}
-        #serving_input_receiver_fn = tf.estimator.export.build_parsing_serving_input_receiver_fn(feature_spec)
+        feature_spec = {
+           'feat_ids': tf.FixedLenFeature(dtype=tf.int64, shape=[None, FLAGS.field_size]),
+           'feat_vals': tf.FixedLenFeature(dtype=tf.float32, shape=[None, FLAGS.field_size])
+        }
+        serving_input_receiver_fn = tf.estimator.export.build_parsing_serving_input_receiver_fn(feature_spec)
 
-        #feature_spec = {
-        #    'feat_ids': tf.placeholder(dtype=tf.int64, shape=[None, FLAGS.field_size], name='feat_ids'),
-        #    'feat_vals': tf.placeholder(dtype=tf.float32, shape=[None, FLAGS.field_size], name='feat_vals')
-        #}
-        #serving_input_receiver_fn = tf.estimator.export.build_raw_serving_input_receiver_fn(feature_spec)
-        #Estimator.export_savedmodel(FLAGS.servable_model_dir, serving_input_receiver_fn)
+        feature_spec = {
+           'feat_ids': tf.placeholder(dtype=tf.int64, shape=[None, FLAGS.field_size], name='feat_ids'),
+           'feat_vals': tf.placeholder(dtype=tf.float32, shape=[None, FLAGS.field_size], name='feat_vals')
+        }
+        serving_input_receiver_fn = tf.estimator.export.build_raw_serving_input_receiver_fn(feature_spec)
+        Estimator.export_savedmodel(FLAGS.servable_model_dir, serving_input_receiver_fn)
 
 if __name__ == "__main__":
     tf.logging.set_verbosity(tf.logging.INFO)
