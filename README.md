@@ -39,11 +39,11 @@ pipline: feature → model → serving
 
 ### 服务框架 -- request in，pctr out
 方式1、线上预测服务使用TensorFlow Serving+TAF搭建。使用 gRPC 作为接口接受外部调用，它支持模型热更新与自动模型版本管理。
-导出TF-Serving能识别的模型文件：
+``1、导出TF-Serving能识别的模型文件``
 
      python3 ./ctr/model/DeepFM.py --task_type=export --learning_rate=0.0005 --optimizer=Adam --batch_size=256 --field_size=39 --feature_size=117581 --deep_layers=400,400,400 --dropout=0.5,0.5,0.5 --log_steps=1000 --num_threads=8 --model_dir=${model_dir_ckpt}/DeepFM/ --servable_model_dir=${model_dir_pb}
 
-默认以时间戳来管理版本，生成文件如下：
+``默认以时间戳来管理版本，生成文件如下``
 
       $ ls -lh servable_model/161793023
       |--saved_model.pb
@@ -51,7 +51,7 @@ pipline: feature → model → serving
         |--variables.data-00000-of-00001
         |--variables.index
 
-然后写client发送请求，参考Serving_pipeline
+``2、写client发送请求，参考ctr目录下server``
 
 方式2、线上预测服务使用onnxruntime进行搭建。
 1）导出TF-Serving能识别的模型文件：
