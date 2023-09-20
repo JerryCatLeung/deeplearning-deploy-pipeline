@@ -38,8 +38,9 @@
 
     python3 -m tf2onnx.convert --saved-model ${model_dir_pb}/1694745305 --output ${model_dir_onnx}/1694745305/model.onnx --opset 13
 
-### 服务框架 -- request in，pctr out
-方式1、线上预测服务使用TensorFlow Serving+TAF搭建。使用 gRPC 作为接口接受外部调用，它支持模型热更新与自动模型版本管理。
+### 服务框架 -- 输入：request，输出：pctr
+
+方式1、使用tf serving进行线上预测服务，使用 gRPC 作为接口接受外部调用，支持模型热更新与自动模型版本管理。
 
 ``1、导出TF-Serving能识别的模型文件``
 
@@ -55,11 +56,12 @@
 
 ``2、写client发送请求，参考ctr目录下server``
 
-方式2、线上预测服务使用onnxruntime进行搭建。
-1）导出TF-Serving能识别的模型文件：
+方式2、使用onnxruntime进行线上预测服务
+
+``1、导出TF-Serving能识别的模型文件``
 
      python3 ./ctr/model/DeepFM.py --task_type=export --learning_rate=0.0005 --optimizer=Adam --batch_size=256 --field_size=39 --feature_size=117581 --deep_layers=400,400,400 --dropout=0.5,0.5,0.5 --log_steps=1000 --num_threads=8 --model_dir=${model_dir_ckpt}/DeepFM/ --servable_model_dir=${model_dir_pb}
      
-``onnxruntime模型推理``
+``2、onnxruntime模型推理``
 
     python3 verification_onnx.py
