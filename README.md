@@ -10,8 +10,10 @@
 pipline: feature → model → serving
 
 ## 特征框架
+
 实验数据集用criteo
 连续特征处理
+
     --不做embedding
       |1、concat[continuous, emb_vec]做fc
     --做embedding
@@ -49,4 +51,4 @@ python3 -m tf2onnx.convert --saved-model ${model_dir_pb}/1694745305 --output ${m
 
      python3 ./ctr/model/DeepFM.py --task_type=export --learning_rate=0.0005 --optimizer=Adam --batch_size=256 --field_size=39 --feature_size=117581 --deep_layers=400,400,400 --dropout=0.5,0.5,0.5 --log_steps=1000 --num_threads=8 --model_dir=${model_dir_ckpt}/DeepFM/ --servable_model_dir=${model_dir_pb}
 2) onnxruntime模型推理:
-    python3 verification_onnx.py
+   |--python3 verification_onnx.py
