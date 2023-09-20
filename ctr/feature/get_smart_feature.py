@@ -3,6 +3,7 @@
 """
 bml to csv
 """
+from imp import reload
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")

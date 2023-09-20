@@ -3,6 +3,7 @@
 """
 label map to {0, 1}
 """
+from imp import reload
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
