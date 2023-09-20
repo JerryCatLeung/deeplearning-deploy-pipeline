@@ -8,7 +8,7 @@
 ## How to use
 pipline: feature → model → serving
 
-### 特征框架 -- logs in，samples out
+## 特征框架 -- logs in，samples out
 实验数据集用criteo，特征工程参考
 连续特征处理
     --不做embedding
