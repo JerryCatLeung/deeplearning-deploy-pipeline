@@ -1,49 +1,23 @@
-# deeplearning-deploy-pipeline
-## TensorFlow Estimator of DeepCTR - DeepFM/wide_n_deep/FNN/PNN/NFM/AFM/DCN
-深度学习在ctr预估领域的应用越来越多，新的模型结构层出不穷。但是这些模型如何验证是否有效，快速在工业界落地仍然存在一些问题：
-
-* 开源的实现基本都是学术界的人在搞，距离工业应用还有较大的鸿沟
-* 模型实现大量调用底层且低版本的API，兼容和性能很成问题
-* 单机，放到工业场景下跑不动
-* 迁移成本较高，每种算法都要从头开始搭一套
-
-针对存在的问题做了一些探索，摸索出一套基于TensorFlow的统一框架，有以下特性：
+### deeplearning-deploy-pipeline
 
 * 读数据采用Dataset API，支持 parallel and prefetch读取
 * 通过Estimator封装算法f(x)，实验新算法边际成本比较低，只需要改写model_fn f(x)部分
 * 支持分布式以及单机多线程训练
 * 支持export model，然后用TensorFlow Serving提供线上预测服务
 
-[我的知乎](https://zhuanlan.zhihu.com/p/33699909)
-
 ## How to use
 pipline: feature → model → serving
 
 ### 特征框架 -- logs in，samples out
-实验数据集用criteo，特征工程参考[here](https://github.com/PaddlePaddle/models/blob/develop/deep_fm/preprocess.py)
-
-DNN做ctr预估的优势在于对大规模离散特征建模，paper关注点大都放在ID类特征如何做embedding上，至于连续特征如何处理很少讨论，大概有以下3种方式：
-
+实验数据集用criteo，特征工程参考
+连续特征处理
     --不做embedding
       |1--concat[continuous, emb_vec]做fc
     --做embedding
       |2--离散化之后embedding
       |3--类似FM二阶部分, 统一做embedding, <id, val> 离散特征val=1.0
-为了模型设计上的简单统一，采用第3种方式，感兴趣的同学可以试试前两种的效果。
 
     python get_criteo_feature.py --input_dir=../../data/criteo/ --output_dir=../../data/criteo/ --cutoff=200
-
-### 训练框架 -- samples in，model out
-用Tensorflow (version: 1.4)作为训练框架，目前实现了DeepFM/wide_n_deep/FNN/PNN/NFM/AFM/Deep & Cross Network等算法，除了wide_n_deep，其他算法默认参数.
-
-![tensorboard_auc.png](https://github.com/lambdaji/tf_repos/raw/master/deep_ctr/uploads/tensorboard_auc.png)
-
-其实很多模型结构的表达能力都是同等的，性能上的差异主要是由于某些结构比其他结构更容易优化导致的。下图是固定同一组超参比较不同网络结构的特性，可以发现：
-- FNN/Inner-PNN/DeepFM/DCN几个算法AUC=0.8±0.003
-- 结构相对简单的FNN收敛较慢，但是AUC能够达到0.8!
-- DeepFM&DCN通过shallow part把反馈信号传回embedding层，收敛得更快。
-
-![same_hyper.png](https://github.com/lambdaji/tf_repos/raw/master/deep_ctr/uploads/same_hyper.png)
 
 以DeepFM为例来看看如何使用：
 
