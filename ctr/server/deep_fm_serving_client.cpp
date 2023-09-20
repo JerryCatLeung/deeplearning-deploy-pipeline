@@ -2,7 +2,7 @@
  * deep_fm_serving_client.cpp
  *
  *  Created on: 2018年2月7日
- *      Author: lambdaji
+ *      Author: JerryCat
  */
 
 #include "wide_n_deep_serving_client.h"

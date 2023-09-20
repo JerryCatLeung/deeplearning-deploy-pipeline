@@ -2,7 +2,7 @@
  * deep_fm_serving_client.h
  *
  *  Created on: 2018年2月7日
- *      Author: lambdaji
+ *      Author: JerryCat
  */
 
 #ifndef DEEP_FM_SERVING_CLIENT_H_

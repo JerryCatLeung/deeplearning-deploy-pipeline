@@ -6,28 +6,15 @@ TensorFlow Implementation of <<Neural Factorization Machines for Sparse Predicti
 #2 Train pipline using Coustom Estimator by rewriting model_fn
 #3 Support distincted training by TF_CONFIG
 #4 Support export model for TensorFlow Serving
-
-by lambdaji
 """
-#from __future__ import absolute_import
-#from __future__ import division
-#from __future__ import print_function
 
-#import argparse
 import shutil
-#import sys
 import os
 import json
 import glob
 from datetime import date, timedelta
 from time import time
-#import gc
-#from multiprocessing import Process
-
-#import math
 import random
-#import pandas as pd
-#import numpy as np
 import tensorflow as tf
 
 #################### CMD Arguments ####################
@@ -63,9 +50,6 @@ tf.app.flags.DEFINE_boolean("clear_existing_model", False, "clear existing model
 def input_fn(filenames, batch_size=32, num_epochs=1, perform_shuffle=False):
     print('Parsing', filenames)
     def decode_libsvm(line):
-        #columns = tf.decode_csv(value, record_defaults=CSV_COLUMN_DEFAULTS)
-        #features = dict(zip(CSV_COLUMNS, columns))
-        #labels = features.pop(LABEL_COLUMN)
         columns = tf.string_split([line], ' ')
         labels = tf.string_to_number(columns.values[0], out_type=tf.float32)
         splits = tf.string_split(columns.values[1:], ':')
@@ -328,12 +312,6 @@ def main(_):
             for prob in preds:
                 fo.write("%f\n" % (prob['prob']))
     elif FLAGS.task_type == 'export':
-        #feature_spec = tf.feature_column.make_parse_example_spec(feature_columns)
-        #feature_spec = {
-        #    'feat_ids': tf.FixedLenFeature(dtype=tf.int64, shape=[None, FLAGS.field_size]),
-        #    'feat_vals': tf.FixedLenFeature(dtype=tf.float32, shape=[None, FLAGS.field_size])
-        #}
-        #serving_input_receiver_fn = tf.estimator.export.build_parsing_serving_input_receiver_fn(feature_spec)
         feature_spec = {
             'feat_ids': tf.placeholder(dtype=tf.int64, shape=[None, FLAGS.field_size], name='feat_ids'),
             'feat_vals': tf.placeholder(dtype=tf.float32, shape=[None, FLAGS.field_size], name='feat_vals')

@@ -1,13 +1,11 @@
 #!/usr/bin/env python
 # coding=utf-8
 """
-TensorFlow Implementation of <<DeepFM: A Factorization-Machine based Neural Network for CTR Prediction>> with the fellowing features：
+TensorFlow Implementation of <<DeepFM: A Factorization-Machine based Neural Network for CTR Prediction>> with the fellowing features:
 #1 Input pipline using Dataset high level API, Support parallel and prefetch reading
 #2 Train pipline using Coustom Estimator by rewriting model_fn
 #3 Support distincted training using TF_CONFIG
 #4 Support export_model for TensorFlow Serving
-
-by lambdaji
 """
 # from __future__ import absolute_import
 # from __future__ import division
@@ -66,9 +64,6 @@ def input_fn(filenames, batch_size=32, num_epochs=1, perform_shuffle=False):
     print('Parsing', filenames)
 
     def decode_libsvm(line):
-        # columns = tf.decode_csv(value, record_defaults=CSV_COLUMN_DEFAULTS)
-        # features = dict(zip(CSV_COLUMNS, columns))
-        # labels = features.pop(LABEL_COLUMN)
         columns = tf.string_split([line], ' ')
         labels = tf.string_to_number(columns.values[0], out_type=tf.float32)
         splits = tf.string_split(columns.values[1:], ':')
@@ -76,11 +71,6 @@ def input_fn(filenames, batch_size=32, num_epochs=1, perform_shuffle=False):
         feat_ids, feat_vals = tf.split(id_vals, num_or_size_splits=2, axis=1)
         feat_ids = tf.string_to_number(feat_ids, out_type=tf.int32)
         feat_vals = tf.string_to_number(feat_vals, out_type=tf.float32)
-        # feat_ids = tf.reshape(feat_ids,shape=[-1,FLAGS.field_size])
-        # for i in range(splits.dense_shape.eval()[0]):
-        #    feat_ids.append(tf.string_to_number(splits.values[2*i], out_type=tf.int32))
-        #    feat_vals.append(tf.string_to_number(splits.values[2*i+1]))
-        # return tf.reshape(feat_ids,shape=[-1,field_size]), tf.reshape(feat_vals,shape=[-1,field_size]), labels
         return {"feat_ids": feat_ids, "feat_vals": feat_vals}, labels
 
     # Extract lines from input files using the Dataset API, can pass one filename or filename list
@@ -110,8 +100,6 @@ def model_fn(features, labels, mode, params):
     embedding_size = params["embedding_size"]
     l2_reg = params["l2_reg"]
     learning_rate = params["learning_rate"]
-    # batch_norm_decay = params["batch_norm_decay"]
-    # optimizer = params["optimizer"]
     layers = map(int, params["deep_layers"].split(','))
     dropout = map(float, params["dropout"].split(','))
 
@@ -169,16 +157,12 @@ def model_fn(features, labels, mode, params):
             if mode == tf.estimator.ModeKeys.TRAIN:
                 deep_inputs = tf.nn.dropout(deep_inputs, keep_prob=dropout[
                     i])  # Apply Dropout after all BN layers and set dropout=0.8(drop_ratio=0.2)
-                # deep_inputs = tf.layers.dropout(inputs=deep_inputs, rate=dropout[i], training=mode == tf.estimator.ModeKeys.TRAIN)
-
+                
         y_deep = tf.contrib.layers.fully_connected(inputs=deep_inputs, num_outputs=1, activation_fn=tf.identity, \
                                                    weights_regularizer=tf.contrib.layers.l2_regularizer(l2_reg),
                                                    scope='deep_out')
         y_d = tf.reshape(y_deep, shape=[-1])
-        # sig_wgts = tf.get_variable(name='sigmoid_weights', shape=[layers[-1]], initializer=tf.glorot_normal_initializer())
-        # sig_bias = tf.get_variable(name='sigmoid_bias', shape=[1], initializer=tf.constant_initializer(0.0))
-        # deep_out = tf.nn.xw_plus_b(deep_inputs,sig_wgts,sig_bias,name='deep_out')
-
+        
     with tf.variable_scope("DeepFM-out"):
         # y_bias = FM_B * tf.ones_like(labels, dtype=tf.float32)  # None * 1  warning;这里不能用label，否则调用predict/export函数会出错，train/evaluate正常；初步判断estimator做了优化，用不到label时不传
         y_bias = FM_B * tf.ones_like(y_d, dtype=tf.float32)  # None * 1
@@ -366,12 +350,6 @@ def main(_):
             for prob in preds:
                 fo.write("%f\n" % (prob['prob']))
     elif FLAGS.task_type == 'export':
-        # feature_spec = tf.feature_column.make_parse_example_spec(feature_columns)
-        # feature_spec = {
-        #    'feat_ids': tf.FixedLenFeature(dtype=tf.int64, shape=[None, FLAGS.field_size]),
-        #    'feat_vals': tf.FixedLenFeature(dtype=tf.float32, shape=[None, FLAGS.field_size])
-        # }
-        # serving_input_receiver_fn = tf.estimator.export.build_parsing_serving_input_receiver_fn(feature_spec)
         feature_spec = {
             'feat_ids': tf.placeholder(dtype=tf.int64, shape=[None, FLAGS.field_size], name='feat_ids'),
             'feat_vals': tf.placeholder(dtype=tf.float32, shape=[None, FLAGS.field_size], name='feat_vals')

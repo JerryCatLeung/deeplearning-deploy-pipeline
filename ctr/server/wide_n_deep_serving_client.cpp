@@ -1,8 +1,8 @@
 /*
  * wide_n_deep_serving_client.cpp
  *
- *  Created on: 2017��10��28��
- *      Author: lambdaji
+ *  Created on: 2018年2月7日
+ *      Author: JerryCat
  */
 
 #include "wide_n_deep_serving_client.h"

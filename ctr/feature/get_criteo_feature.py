@@ -4,7 +4,7 @@ This code referenced from [here](https://github.com/PaddlePaddle/models/blob/dev
 -For numerical features,normalzied to continous values.
 -For categorical features, removed long-tailed data appearing less than 200 times.
 
-TODO：
+TODO:
 #1 连续特征 离散化
 #2 Nagetive down sampling
 """

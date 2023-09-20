@@ -1,8 +1,8 @@
 /*
  * wide_n_deep_serving_client.h
  *
- *  Created on: 2017Äê10ÔÂ28ÈÕ
- *      Author: lambdaji
+ *  Created on: 2018å¹´2æœˆ7æ—¥
+ *      Author: JerryCat
  */
 
 #ifndef WIDE_N_DEEP_SERVING_CLIENT_H_

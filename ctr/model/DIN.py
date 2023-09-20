@@ -3,8 +3,6 @@
 """
 TensorFlow Implementation of <<Deep Interest Network for Click-Through Rate Prediction>>
 Dataset desc: https://tianchi.aliyun.com/datalab/dataSet.html?dataId=408
-
-by lambdaji
 """
 # from __future__ import absolute_import
 # from __future__ import division
@@ -139,9 +137,6 @@ def model_fn(features, labels, mode, params):
     a_shopids = features['a_shopids']
     a_brandids = features['a_brandids']
     a_intids = features['a_intids']  # multi-hot
-    # {X multi-hot}
-    # x_intids    = features['x_intids']
-    # x_intvals   = features['x_intvals']
 
     # ------build f(x)------
     with tf.variable_scope("Embedding-layer"):

@@ -1,13 +1,11 @@
 #!/usr/bin/env python
 # coding=utf-8
 """
-TensorFlow Implementation of <<Deep & Cross Network for Ad Click Predictions>> with the fellowing features：
+TensorFlow Implementation of <<Deep & Cross Network for Ad Click Predictions>> with the fellowing features:
 #1 Input pipline using Dataset high level API, Support parallel and prefetch reading
 #2 Train pipline using Coustom Estimator by rewriting model_fn
 #3 Support distincted training using TF_CONFIG
 #4 Support export_model for TensorFlow Serving
-
-by lambdaji
 """
 import shutil
 import os
@@ -61,9 +59,6 @@ def input_fn(filenames, batch_size=32, num_epochs=1, perform_shuffle=False):
     print('Parsing', filenames)
 
     def decode_libsvm(line):
-        # columns = tf.decode_csv(value, record_defaults=CSV_COLUMN_DEFAULTS)
-        # features = dict(zip(CSV_COLUMNS, columns))
-        # labels = features.pop(LABEL_COLUMN)
         columns = tf.string_split([line], ' ')
         labels = tf.string_to_number(columns.values[0], out_type=tf.float32)
         splits = tf.string_split(columns.values[1:], ':')
@@ -71,11 +66,6 @@ def input_fn(filenames, batch_size=32, num_epochs=1, perform_shuffle=False):
         feat_ids, feat_vals = tf.split(id_vals, num_or_size_splits=2, axis=1)
         feat_ids = tf.string_to_number(feat_ids, out_type=tf.int32)
         feat_vals = tf.string_to_number(feat_vals, out_type=tf.float32)
-        # feat_ids = tf.reshape(feat_ids,shape=[-1,FLAGS.field_size])
-        # for i in range(splits.dense_shape.eval()[0]):
-        #    feat_ids.append(tf.string_to_number(splits.values[2*i], out_type=tf.int32))
-        #    feat_vals.append(tf.string_to_number(splits.values[2*i+1]))
-        # return tf.reshape(feat_ids,shape=[-1,field_size]), tf.reshape(feat_vals,shape=[-1,field_size]), labels
         return {"feat_ids": feat_ids, "feat_vals": feat_vals}, labels
 
     # Extract lines from input files using the Dataset API, can pass one filename or filename list
@@ -105,8 +95,6 @@ def model_fn(features, labels, mode, params):
     embedding_size = params["embedding_size"]
     l2_reg = params["l2_reg"]
     learning_rate = params["learning_rate"]
-    # batch_norm_decay = params["batch_norm_decay"]
-    # optimizer = params["optimizer"]
     deep_layers = list(map(int, params["deep_layers"].split(',')))
     cross_layers = params["cross_layers"]
     dropout = list(map(float, params["dropout"].split(',')))
@@ -168,7 +156,6 @@ def model_fn(features, labels, mode, params):
             if mode == tf.estimator.ModeKeys.TRAIN:
                 x_deep = tf.nn.dropout(x_deep, keep_prob=dropout[
                     i])  # Apply Dropout after all BN layers and set dropout=0.8(drop_ratio=0.2)
-                # x_deep = tf.layers.dropout(inputs=x_deep, rate=dropout[i], training=mode == tf.estimator.ModeKeys.TRAIN)
 
     with tf.variable_scope("DCN-out"):
         x_stack = tf.concat([xl, x_deep], 1)  # None * ( F*K+ deep_layers[i])
@@ -368,12 +355,6 @@ def main(_):
             for prob in preds:
                 fo.write("%f\n" % (prob['prob']))
     elif FLAGS.task_type == 'export':
-        # feature_spec = tf.feature_column.make_parse_example_spec(feature_columns)
-        # feature_spec = {
-        #    'feat_ids': tf.FixedLenFeature(dtype=tf.int64, shape=[None, FLAGS.field_size]),
-        #    'feat_vals': tf.FixedLenFeature(dtype=tf.float32, shape=[None, FLAGS.field_size])
-        # }
-        # serving_input_receiver_fn = tf.estimator.export.build_parsing_serving_input_receiver_fn(feature_spec)
         feature_spec = {
             'feat_ids': tf.placeholder(dtype=tf.int64, shape=[None, FLAGS.field_size], name='feat_ids'),
             'feat_vals': tf.placeholder(dtype=tf.float32, shape=[None, FLAGS.field_size], name='feat_vals')
