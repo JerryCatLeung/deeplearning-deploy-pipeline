@@ -6,8 +6,9 @@
 * 服务：支持模型导出，使用TensorFlow Serving或onnxruntime提供线上预测服务
 
 ## 如何使用
-特征处理、模型训练以及模型服务相关脚本在根目录ctr目录下
-pipline: feature → model → serving
+特征处理、模型训练以及模型服务相关脚本在ctr目录下
+
+    pipline: feature → model → serving
 
 ## 特征框架
 
