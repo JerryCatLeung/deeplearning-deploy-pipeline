@@ -1,3 +1,4 @@
+#include <iostream>
 #include <assert.h>
 #include <vector>
 #include <onnxruntime_cxx_api.h>
@@ -7,17 +8,12 @@ int main(int argec, char* argv[]){
     Ort::SessionOptions session_options;
     session_options.SetInterOpNumThreads(1);
     session_options.SetGraphOptimizationLevel(GraphOptimizationLevel::ORT_ENABLE_EXTENDED);
+    const char* model_path = "./model_onnx/model.onnx";
 
-    #ifdef_WIN32
-      const wchar_t* model_path = L"model.onnx";
-    #else
-      const char* model_path = "model.onnx";
-    #endif
-    
     Ort::Session session(env, model_path, session_options);
     Ort::AllocatorWithDefaultOptions allocator;
     size_t num_input_nodes = session.GetInputCount();
-    print(num_input_nodes)
+    std::cout << num_input_nodes;
     std::vector<const char*> input_node_names = {"input","input_mask"};
     std::vector<const char*> output_node_names = {"output","output_mask"};
     
