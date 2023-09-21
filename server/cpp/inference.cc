@@ -47,6 +47,5 @@ int main(int argec, char* argv[]){
     // float* floatarr = output_tensors[0].GetTensorMutableData<float>();
     // float* floatarr_mask = output_tensors[1].GetTensorMutableData<float>();
   
-    printf("Done!\n");
     return 0;
 }
