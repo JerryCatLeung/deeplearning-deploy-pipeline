@@ -1,0 +1,3 @@
+[submodule "onnxruntime"]
+	path = onnxruntime
+	url = https://github.com/JerryCatLeung/deeplearning-deploy-pipeline.git
