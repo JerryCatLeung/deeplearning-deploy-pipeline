@@ -1,8 +1,8 @@
-model_dir_ckpt="./model_ckpt/criteo/"
+model_dir_ckpt="./model_ckpt/Criteo/"
 model_dir_pb="./model_pb/"
 model_dir_onnx="./model_onnx/"
-data_dir_raw="./data/criteo/raw"
-data_dir_processed="./data/criteo/processed"
+data_dir_raw="./data/Criteo/raw"
+data_dir_processed="./data/Criteo/processed"
 
 # 以DeepFM为例
 # 1.特征处理
