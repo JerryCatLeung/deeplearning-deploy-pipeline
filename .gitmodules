@@ -1,0 +1,3 @@
+[submodule "server/cpp/src/onnxruntime"]
+	path = server/cpp/src/onnxruntime
+	url = https://github.com/microsoft/onnxruntime.git
