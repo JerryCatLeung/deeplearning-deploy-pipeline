@@ -1,0 +1,8 @@
+.idea
+*.iml
+.vscode
+
+target
+
+log
+models
