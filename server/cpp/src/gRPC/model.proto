@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package model;
+
+service Model {
+  rpc RunModel (ModelRequest) returns (ModelReply) {}
+}
+
+message ModelRequest {
+  repeated int64 input1 = 1;
+  repeated float input2 = 2;
+}
+
+message ModelReply {
+  repeated float output = 1;
+}
