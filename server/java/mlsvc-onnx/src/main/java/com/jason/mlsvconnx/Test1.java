@@ -6,15 +6,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ai.onnxruntime.OnnxTensor;
+import ai.onnxruntime.OnnxValue;
 import ai.onnxruntime.OrtEnvironment;
+import ai.onnxruntime.OrtException;
 import ai.onnxruntime.OrtSession;
+import ai.onnxruntime.OrtSession.Result;
 import ai.onnxruntime.OrtSession.SessionOptions;
 
 public class Test1 {
 
     public static void main(String[] args) throws Exception {
-        // String model = "/workspaces/mlsvc-onnx/models/cnn_mnist_pytorch.onnx";
-        String model = "/workspaces/mlsvc-onnx/models/model.onnx";
+        String model = "/Users/jason/Projects/citicbank/mlsvc-onnx/models/model.onnx";
         long[] shape = new long[] {70, 39};
 
         OrtEnvironment env = OrtEnvironment.getEnvironment();
@@ -180,16 +182,16 @@ public class Test1 {
 
         System.out.println("cost --> " + (end - start));
 
-        // Result result = session.run(inputs);
-        // result.forEach(entry -> {
-        //     OnnxValue value = (OnnxValue) entry.getValue();
-        //     try {
-        //         float[] rs = (float[]) value.getValue();
-        //         System.out.println(entry.getKey() + "-->" + rs[0]);
-        //     } catch (OrtException e) {
-        //         e.printStackTrace();
-        //     }
-        // });
+        Result result = session.run(inputs);
+        result.forEach(entry -> {
+            OnnxValue value = (OnnxValue) entry.getValue();
+            try {
+                float[] rs = (float[]) value.getValue();
+                System.out.println(entry.getKey() + "-->" + rs[0]);
+            } catch (OrtException e) {
+                e.printStackTrace();
+            }
+        });
 
     }
 

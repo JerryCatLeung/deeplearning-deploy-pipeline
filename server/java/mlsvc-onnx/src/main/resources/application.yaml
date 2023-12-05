@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+  path: logs  
+
+reactor:
+  netty:
+    io-select-count: 1
+    io-worker-count: 4
+
+onnxruntime:
+  inter-op-num-threads: 4
+
