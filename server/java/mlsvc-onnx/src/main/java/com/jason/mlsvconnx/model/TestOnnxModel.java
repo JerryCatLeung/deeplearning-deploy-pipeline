@@ -50,6 +50,9 @@ public class TestOnnxModel implements InitializingBean {
         inputs.put("feat_ids", OnnxTensor.createTensor(env, LongBuffer.wrap(featIds), shape));
         inputs.put("feat_vals", OnnxTensor.createTensor(env, FloatBuffer.wrap(featVals), shape));
 
+        // inputs.put("feat_ids", OnnxTensor.createTensor(env, LongBuffer.wrap(featIds)));
+        // inputs.put("feat_vals", OnnxTensor.createTensor(env, FloatBuffer.wrap(featVals)));
+
         List<float[]> rsList = new ArrayList<>();
         Result result = session.run(inputs);
         result.forEach(entry -> {
