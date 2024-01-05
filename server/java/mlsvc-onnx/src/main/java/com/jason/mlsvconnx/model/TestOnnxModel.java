@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,6 +32,8 @@ public class TestOnnxModel implements InitializingBean {
     @Value("${onnxruntime.inter-op-num-threads:1}")
     private int interOpNumThreads;
 
+    private Lock lock = new ReentrantLock();
+
     private static final String ENV_TEST_MODEL_PATH = "TEST_MODEL_PATH";
 
     @Override
@@ -40,7 +44,7 @@ public class TestOnnxModel implements InitializingBean {
         }
         OrtSession.SessionOptions opts = new SessionOptions();
         opts.setInterOpNumThreads(interOpNumThreads);
-        this.env = OrtEnvironment.getEnvironment();
+                this.env = OrtEnvironment.getEnvironment();
         this.session = env.createSession(modelPath, opts);
     }
 
@@ -54,7 +58,9 @@ public class TestOnnxModel implements InitializingBean {
         // inputs.put("feat_vals", OnnxTensor.createTensor(env, FloatBuffer.wrap(featVals)));
 
         List<float[]> rsList = new ArrayList<>();
+        lock.lock();
         Result result = session.run(inputs);
+        lock.unlock();
         result.forEach(entry -> {
             OnnxValue value = (OnnxValue) entry.getValue();
             try {
